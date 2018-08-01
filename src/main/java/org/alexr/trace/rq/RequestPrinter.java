@@ -1,4 +1,4 @@
-package org.alexr.trace;
+package org.alexr.trace.rq;
 
 import org.alexr.colored.Ansi;
 import org.alexr.colored.Attribute;

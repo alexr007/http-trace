@@ -1,4 +1,4 @@
-package org.alexr.trace;
+package org.alexr.trace.rs;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.WriteListener;

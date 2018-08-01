@@ -1,4 +1,6 @@
-package org.alexr.trace;
+package org.alexr.trace.rs;
+
+import org.alexr.trace.rs.ServletOutputStreamCopier;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;

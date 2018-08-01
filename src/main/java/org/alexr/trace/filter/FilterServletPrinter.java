@@ -1,5 +1,6 @@
-package org.alexr.trace;
+package org.alexr.trace.filter;
 
+import org.alexr.trace.rq.RequestPrinter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,16 +25,16 @@ public class FilterServletPrinter implements Filter {
         if (response.getCharacterEncoding() == null) {
             response.setCharacterEncoding("UTF-8");
         }
-*/
 
-/*
         HttpServletResponseCopier responseCopier = new HttpServletResponseCopier((HttpServletResponse) response);
         chain.doFilter(req, responseCopier);
 */
 
-        chain.doFilter(req, response);
+        HttpServletResponse r1 = (HttpServletResponse) response;
+        r1.addHeader("New Field", "value");
+        r1.setHeader("Server", "alexr");
 
-        log.info("AFTER="+new ResponsePrinter(response).getAll());
+        chain.doFilter(req, response);
 /*
         responseCopier.flushBuffer();
         byte[] copy = responseCopier.getCopy();
