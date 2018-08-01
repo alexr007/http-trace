@@ -25,9 +25,10 @@ public class RequestPrinter {
 
     public String getRequestType() {
         StringBuilder sb = new StringBuilder("Request");
+        String query = req.getQueryString() == null ? "" : req.getQueryString();
         sb.append("Request type:").append(Colored.build(req.getMethod(),Attribute.BLUE.bold())).append("\n");
         sb.append("URL:").append(Colored.build(req.getRequestURL(), Attribute.BLUE.bold())).append("\n");
-        sb.append("Query:").append(Colored.build(req.getQueryString(), Attribute.BLUE.bold())).append("\n");
+        sb.append("Query:").append(Colored.build(query, Attribute.BLUE.bold())).append("\n");
         return sb.toString();
     }
 
