@@ -23,11 +23,8 @@ public class RequestPrinter {
         this.req = req;
     }
 
-    public static void main(String[] args) {
-        System.out.print(Colored.build("Hello:", Ansi.ColorFont.GREEN));
-        System.out.print("default");
-        System.out.print(Colored.build("World", Ansi.ColorFont.RED));
-        System.out.println();
+    public String getRequestType() {
+        return "Request type:" + Colored.build(req.getMethod(),Attribute.BLUE.bold()) + "\n";
     }
 
     public String getAllHeaders() {
@@ -70,7 +67,7 @@ public class RequestPrinter {
     }
 
     public String getAll() throws IOException {
-        return String.join("", getAllHeaders(), getAllParams(), getAllBody());
+        return String.join("", getRequestType(), getAllHeaders(), getAllParams(), getAllBody());
     }
 
     public void printAll() throws IOException {
