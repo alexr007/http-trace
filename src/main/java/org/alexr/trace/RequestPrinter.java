@@ -16,7 +16,7 @@ public class RequestPrinter {
     private final HttpServletRequest req;
 
     public RequestPrinter(final ServletRequest req) {
-        this((HttpServletRequest) req));
+        this((HttpServletRequest) req);
     }
 
     public RequestPrinter(final HttpServletRequest req) {
