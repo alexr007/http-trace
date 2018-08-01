@@ -24,7 +24,11 @@ public class RequestPrinter {
     }
 
     public String getRequestType() {
-        return "Request type:" + Colored.build(req.getMethod(),Attribute.BLUE.bold()) + "\n";
+        StringBuilder sb = new StringBuilder("Request");
+        sb.append("Request type:").append(Colored.build(req.getMethod(),Attribute.BLUE.bold())).append("\n");
+        sb.append("URL:").append(Colored.build(req.getRequestURL(), Attribute.BLUE.bold())).append("\n");
+        sb.append("Query:").append(Colored.build(req.getQueryString(), Attribute.BLUE.bold())).append("\n");
+        return sb.toString();
     }
 
     public String getAllHeaders() {
