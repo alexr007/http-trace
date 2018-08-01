@@ -6,6 +6,7 @@ import org.alexr.colored.Colored;
 import org.slf4j.Logger;
 import org.slf4j.event.Level;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Enumeration;
@@ -13,6 +14,10 @@ import java.util.Scanner;
 
 public class RequestPrinter {
     private final HttpServletRequest req;
+
+    public RequestPrinter(final ServletRequest req) {
+        this((HttpServletRequest) req));
+    }
 
     public RequestPrinter(final HttpServletRequest req) {
         this.req = req;
