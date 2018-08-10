@@ -6,6 +6,7 @@ import org.alexr.colored.Colored;
 import org.slf4j.Logger;
 import org.slf4j.event.Level;
 
+import javax.servlet.ServletInputStream;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -61,8 +62,9 @@ public class RequestPrinter {
     }
 
     public String getAllBody() throws IOException {
+        ServletInputStream is = req.getInputStream();
         StringBuilder sb = new StringBuilder(Colored.build("BODY:\n",  Ansi.Style.BOLD, Ansi.ColorFont.YELLOW));
-        try (Scanner s = new Scanner(req.getInputStream(), "UTF-8").useDelimiter("\\A");) {
+        try (Scanner s = new Scanner(is, "UTF-8").useDelimiter("\\A");) {
             while (s.hasNext()) {
                 sb.append(s.nextLine())
                         .append("\n");
@@ -72,7 +74,7 @@ public class RequestPrinter {
     }
 
     public String getAll() throws IOException {
-        return String.join("", getRequestType(), getAllHeaders(), getAllParams(), getAllBody());
+        return String.join("", getRequestType(), getAllHeaders(), getAllParams()/*, getAllBody()*/);
     }
 
     public void printAll() throws IOException {
