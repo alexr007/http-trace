@@ -30,9 +30,11 @@ public class FilterServletPrinter implements Filter {
         chain.doFilter(req, responseCopier);
 */
 
+/*
         HttpServletResponse r1 = (HttpServletResponse) response;
         r1.addHeader("New Field", "value");
         r1.setHeader("Server", "alexr");
+*/
 
         chain.doFilter(req, response);
 /*
